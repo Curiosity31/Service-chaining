@@ -1,0 +1,83 @@
+version: '3.7'
+
+services:
+
+  gateway-api:
+    container_name: gateway-api
+    image: ibm-cloud-academy/gateway-api:v1
+    restart: always
+    hostname: GatewayApi
+    ports:
+      - "8080:8080"
+    networks:
+      - back-tier
+
+  service-registry:
+    container_name: service-registry
+    image: ibm-cloud-academy/service-registry:v1
+    restart: always
+    ports:
+      - "8761:8761"
+    networks:
+      - back-tier
+
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus
+    restart: always
+    hostname: Prometheus
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    ports:
+      - "9090:9090"
+    networks:
+      - back-tier
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    restart: always
+    hostname: Grafana
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./grafana/config/provisioning/:/etc/grafana/provisioning/
+    networks:
+      - back-tier
+
+  serviceA:
+    container_name: serviceA
+    image: ibm-cloud-academy/service_a:v1
+    restart: always
+    hostname: ServiceA
+    networks:
+      - back-tier
+
+  serviceB:
+    container_name: serviceB
+    image: ibm-cloud-academy/service_b:v1
+    restart: always
+    hostname: ServiceB
+    networks:
+      - back-tier
+
+  serviceC:
+    container_name: serviceC
+    image: ibm-cloud-academy/service_c:v1
+    restart: always
+    hostname: ServiceC
+    networks:
+      - back-tier
+
+  serviceD:
+    container_name: serviceD
+    image: ibm-cloud-academy/service_d:v1
+    restart: always
+    hostname: ServiceD
+    networks:
+      - back-tier
+
+networks:
+  back-tier:

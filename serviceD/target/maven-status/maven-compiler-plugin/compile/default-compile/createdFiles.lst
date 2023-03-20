@@ -1,0 +1,4 @@
+com\academy\cic\serviceD\service\ServiceDService.class
+com\academy\cic\serviceD\controller\ServiceDController.class
+com\academy\cic\serviceD\ServiceDApplication.class
+com\academy\cic\serviceD\service\implementations\ServiceDServiceImplementation.class

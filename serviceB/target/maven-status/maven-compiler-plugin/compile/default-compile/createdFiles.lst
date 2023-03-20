@@ -1,0 +1,4 @@
+com\academy\cic\serviceB\service\implementations\ServiceBServiceImplementation.class
+com\academy\cic\serviceB\service\ServiceBService.class
+com\academy\cic\serviceB\controller\ServiceBController.class
+com\academy\cic\serviceB\ServiceBApplication.class
