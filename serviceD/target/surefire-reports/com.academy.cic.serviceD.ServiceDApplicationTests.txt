@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.academy.cic.serviceD.ServiceDApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.298 s - in com.academy.cic.serviceD.ServiceDApplicationTests
