@@ -4,11 +4,35 @@
 # Log file
 *.log
 
+# Metadata Directory
+.metadata/
+
 # BlueJ files
 *.ctxt
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+
+# Classpath file
+*.classpath
+
+# Project file
+*.project
+
+# Settings Directory
+.settings/
+
+# Target Directory
+target/
+
+# Mvn Directory
+.mvn/
+
+# Mvnw file
+mvnw
+
+# Mvnw.cmd file
+mvnw.cmd
 
 # Package Files #
 *.jar
