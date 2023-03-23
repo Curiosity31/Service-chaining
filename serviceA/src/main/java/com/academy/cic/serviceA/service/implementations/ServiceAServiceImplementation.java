@@ -41,5 +41,5 @@ public class ServiceAServiceImplementation implements ServiceAService {
 		logger.log(Level.SEVERE, "[Fallback (ServizioA)]: Errore durante la chiamata al servizio B: " + t.getMessage(), t);
 		return "[Fallback] Cloud Academy Marzo 2023";
 	}
-
+	
 }

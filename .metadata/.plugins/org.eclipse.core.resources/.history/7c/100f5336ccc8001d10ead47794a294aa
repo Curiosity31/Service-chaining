@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: serviceA
+
+server:
+  port: 0
+
+serviceBUrl: http://serviceB/serviceB
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://service-registry:8761/eureka/
+      #defaultZone: http://localhost:8761/eureka/
+          
+resilience4j:
+  circuitbreaker:
+    configs:
+      myCircuitBreakerConfig:
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 5000
+        failureRateThreshold: 50
+        slowCallDurationThreshold: 2000
+        recordExceptions:
+          - java.util.concurrent.TimeoutException
+          - org.springframework.web.client.HttpServerErrorException
+    instances:
+      breakerAtoB:
+        baseConfig: myCircuitBreakerConfig
+        registerHealthIndicator: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
