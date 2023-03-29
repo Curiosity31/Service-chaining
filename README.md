@@ -4,6 +4,9 @@ This project is based on a microservices architecture, where microservices colla
 
 To handle requests, the project uses a Gateway-API that routes the request to the first microservice in the service chain. Each microservice is registered on Eureka and containerized using Docker; a network has been defined to connect the containers with each other.
 
+A database has been implemented for each microservice. To do this, a service has been defined in the docker-compose file for services A, B, C and D, representing the database that each of them will be able to query to get the expected data.
+The JPA specification was used to map created Java objects to database tables.
+
 To prevent network or service failure in microservices communication, the circuit-breaker design pattern has been implemented.
 
 The project also includes monitoring of each microservice through the metrics exposed by Actuator. These metrics have been made compatible with Prometheus, which is used for aggregating metrics, through Micrometer.
@@ -20,6 +23,8 @@ Finally, the project uses Grafana for visualizing metrics on a dashboard.
 - Actuator
 - Spring Cloud Gateway
 - Spring Cloud CircuitBreaker
+- JDBC
+- JPA
 
 
 ## Configuration
