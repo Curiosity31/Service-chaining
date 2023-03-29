@@ -8,6 +8,7 @@ import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.academy.cic.serviceA.dao.ServiceADAO;
 import com.academy.cic.serviceA.service.ServiceAService;
 
 @Service
@@ -20,15 +21,17 @@ public class ServiceAServiceImplementation implements ServiceAService {
 	
 	private final RestTemplate restTemplate;
 	private final CircuitBreakerFactory circuitBreakerFactory;
+	private final ServiceADAO serviceADAO;
 
-	public ServiceAServiceImplementation (RestTemplate restTemplate, CircuitBreakerFactory circuitBreakerFactory) {
+	public ServiceAServiceImplementation (RestTemplate restTemplate, CircuitBreakerFactory circuitBreakerFactory, ServiceADAO serviceADAO) {
 		this.restTemplate = restTemplate;
 		this.circuitBreakerFactory = circuitBreakerFactory;
+		this.serviceADAO = serviceADAO;
 	}
 	
 	@Override
 	public String getIBM() {
-		return "IBM";
+		return serviceADAO.getIBM();
 	}
 
 	@Override

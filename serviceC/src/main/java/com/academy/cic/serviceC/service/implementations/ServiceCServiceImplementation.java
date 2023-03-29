@@ -8,6 +8,7 @@ import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.academy.cic.serviceC.dao.ServiceCDAO;
 import com.academy.cic.serviceC.service.ServiceCService;
 
 @Service
@@ -20,15 +21,17 @@ public class ServiceCServiceImplementation implements ServiceCService {
 	private Logger logger = Logger.getLogger(ServiceCServiceImplementation.class.getName());
 	private final RestTemplate restTemplate;
 	private final CircuitBreakerFactory circuitBreakerFactory;
+	private final ServiceCDAO serviceCDAO;
 
-	public ServiceCServiceImplementation (RestTemplate restTemplate, CircuitBreakerFactory circuitBreakerFactory) {
+	public ServiceCServiceImplementation (RestTemplate restTemplate, CircuitBreakerFactory circuitBreakerFactory, ServiceCDAO serviceCDAO) {
 		this.restTemplate = restTemplate;
 		this.circuitBreakerFactory = circuitBreakerFactory;
+		this.serviceCDAO = serviceCDAO;
 	}
 
 	@Override
 	public String getAcademy() {
-		return "Academy";
+		return serviceCDAO.getAcademy();
 	}
 
 	@Override

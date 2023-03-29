@@ -8,4 +8,4 @@ ADD ./target/*.jar $APP_HOME/gateway.jar
 
 WORKDIR $APP_HOME
 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","gateway.jar"]
+ENTRYPOINT ["java","-jar","gateway.jar"]

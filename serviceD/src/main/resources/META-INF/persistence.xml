@@ -1,0 +1,25 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  		xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+        version="2.0">
+
+    <persistence-unit name="service_d">
+        <description>Persistence unit for service D</description>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://host.docker.internal:3306/service_d" />
+            <property name="javax.persistence.jdbc.user" value="user" />
+            <property name="javax.persistence.jdbc.password" value="password" />
+            
+            <!-- property name="hibernate.hbm2ddl.auto" value="update" -->
+            
+            <!-- Mostra codice SQL invece di eseguire le operazioni -->
+            <property name="hibernate.show_sql" value="false" />
+            <!-- Mostra codice SQL formattato -->
+            <property name="hibernate.format_sql" value="false" />
+            
+        </properties>
+
+    </persistence-unit>
+</persistence>

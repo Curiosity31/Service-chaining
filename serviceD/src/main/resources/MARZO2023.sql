@@ -1,0 +1,8 @@
+CREATE DATABASE service_d; 
+USE service_d;
+CREATE TABLE MARZO2023(
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        description VARCHAR(10) NOT NULL
+);
+INSERT INTO MARZO2023(description) 
+VALUES ("Marzo 2023");

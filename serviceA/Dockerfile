@@ -8,4 +8,4 @@ ADD ./target/*.jar $APP_HOME/serviceA.jar
 
 WORKDIR $APP_HOME
 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","serviceA.jar"]
+ENTRYPOINT ["java","-jar","serviceA.jar"]

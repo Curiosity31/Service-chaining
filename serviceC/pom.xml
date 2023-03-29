@@ -84,6 +84,19 @@
 		    <artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
 		
+		<!-- Dipendenza per il driver JDBC MySQL. Quest'ultimo e' necessario per interagire con il database MySQL utilizzando Java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.32</version>
+		</dependency>
+	
+		<!-- Permette di utilizzare le classi e le funzionalità di Hibernate Core nel proprio codice Java -->
+		<dependency>
+		  <groupId>org.hibernate</groupId>
+		  <artifactId>hibernate-core</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

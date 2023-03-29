@@ -31,6 +31,9 @@ target/
 # Mvnw file
 mvnw
 
+# Mysql_data Directory
+mysql_data/
+
 # Mvnw.cmd file
 mvnw.cmd
 

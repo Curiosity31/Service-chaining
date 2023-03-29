@@ -55,11 +55,37 @@ services:
     networks:
       - back-tier
 
+  db_service_a:
+    container_name: db_service_a
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: service_a
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./mysql_data:/var/lib/mysql_db_service_a
+    networks:
+      - back-tier
+
   serviceB:
     container_name: serviceB
     image: ibm-cloud-academy/service_b:v1
     restart: always
     hostname: ServiceB
+    networks:
+      - back-tier
+
+  db_service_b:
+    container_name: db_service_b
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: service_b
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./mysql_data:/var/lib/mysql_db_service_b
     networks:
       - back-tier
 
@@ -70,12 +96,38 @@ services:
     hostname: ServiceC
     networks:
       - back-tier
+  
+  db_service_c:
+    container_name: db_service_c
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: service_c
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./mysql_data:/var/lib/mysql_db_service_c
+    networks:
+      - back-tier
 
   serviceD:
     container_name: serviceD
     image: ibm-cloud-academy/service_d:v1
     restart: always
     hostname: ServiceD
+    networks:
+      - back-tier
+  
+  db_service_d:
+    container_name: db_service_d
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: service_d
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./mysql_data:/var/lib/mysql_db_service_d
     networks:
       - back-tier
 

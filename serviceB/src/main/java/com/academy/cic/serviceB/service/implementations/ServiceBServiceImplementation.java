@@ -8,6 +8,7 @@ import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.academy.cic.serviceB.dao.ServiceBDAO;
 import com.academy.cic.serviceB.service.ServiceBService;
 
 @Service
@@ -19,15 +20,17 @@ public class ServiceBServiceImplementation implements ServiceBService {
 	private Logger logger = Logger.getLogger(ServiceBServiceImplementation.class.getName());
 	private final RestTemplate restTemplate;
 	private final CircuitBreakerFactory circuitBreakerFactory;
+	private final ServiceBDAO serviceBDAO;
 
-	public ServiceBServiceImplementation (RestTemplate restTemplate, CircuitBreakerFactory circuitBreakerFactory) {
+	public ServiceBServiceImplementation (RestTemplate restTemplate, CircuitBreakerFactory circuitBreakerFactory, ServiceBDAO serviceBDAO) {
 		this.restTemplate = restTemplate;
 		this.circuitBreakerFactory = circuitBreakerFactory;
+		this.serviceBDAO = serviceBDAO;
 	}
 
 	@Override
 	public String getCloud() {
-		return "Cloud";
+		return serviceBDAO.getCloud();
 	}
 	
 	@Override
