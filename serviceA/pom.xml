@@ -37,8 +37,16 @@
 		<!-- Spring Cloud Circuitbreaker -->
 		<dependency>
 		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
+		    <artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
 		</dependency> 
+		
+		<!-- Permette di utilizzare l'AOP (Aspect Oriented Programming), separando gestione degli errori, sicurezza, 
+		gestione eccezioni e altro dalle funzionalita' principali dell'applicazione.
+		Consente inoltre il corretto funzionamento dell'annotazione @CircuitBreaker -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
 		
 		<!-- 
 			Eureka: utilizzato per la client-side server discovery, permette ai servizi di 

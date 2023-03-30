@@ -11,6 +11,8 @@ import org.springframework.web.client.RestTemplate;
 import com.academy.cic.serviceC.dao.ServiceCDAO;
 import com.academy.cic.serviceC.service.ServiceCService;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
 @Service
 public class ServiceCServiceImplementation implements ServiceCService {
 
@@ -20,12 +22,12 @@ public class ServiceCServiceImplementation implements ServiceCService {
 	
 	private Logger logger = Logger.getLogger(ServiceCServiceImplementation.class.getName());
 	private final RestTemplate restTemplate;
-	private final CircuitBreakerFactory circuitBreakerFactory;
+	//private final CircuitBreakerFactory circuitBreakerFactory;
 	private final ServiceCDAO serviceCDAO;
 
-	public ServiceCServiceImplementation (RestTemplate restTemplate, CircuitBreakerFactory circuitBreakerFactory, ServiceCDAO serviceCDAO) {
+	public ServiceCServiceImplementation (RestTemplate restTemplate, ServiceCDAO serviceCDAO) {
 		this.restTemplate = restTemplate;
-		this.circuitBreakerFactory = circuitBreakerFactory;
+		//this.circuitBreakerFactory = circuitBreakerFactory;
 		this.serviceCDAO = serviceCDAO;
 	}
 
@@ -34,10 +36,17 @@ public class ServiceCServiceImplementation implements ServiceCService {
 		return serviceCDAO.getAcademy();
 	}
 
+	/*
 	@Override
 	public String callD() {
 	    return circuitBreakerFactory.create("breakerCtoD", "breakerCtoD").run(() -> restTemplate.getForEntity(serviceDUrl + "/getDate", String.class).getBody(),
 	      throwable -> getInfoFallbackCtoD(throwable));
+	}*/
+	
+	@Override
+	@CircuitBreaker(name="breakerCtoD", fallbackMethod="getInfoFallbackCtoD")
+	public String callD() {
+	    return restTemplate.getForEntity(serviceDUrl + "/getDate", String.class).getBody();
 	}
 	
 	public String getInfoFallbackCtoD(Throwable t) {

@@ -24,7 +24,9 @@ public class ServiceAController {
             hostname = "unknown";
         }
 
+        //return serviceAServiceImplementation.getIBM() + " (" + hostname + ") " + serviceAServiceImplementation.callB();
         return serviceAServiceImplementation.getIBM() + " (" + hostname + ") " + serviceAServiceImplementation.callB();
+
     }
 
 }
